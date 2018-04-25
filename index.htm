@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>比特安Bitcoin ALL编译QT钱包知识BTAqt.com</title>
+<style>
+body{
+	font-family: Cambria, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+	background-image:url(http://idgui.com/images/bg.jpg);
+	background-attachment:fixed;
+	font-weight: 400;
+	font-size: 15px;
+	color: #393b40;
+	overflow-y: scroll;
+	margin-left:6%;
+}
+A:visited {
+	COLOR: #000099; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #000099; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #000099; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff6600; text-deroration: none;
+position: relative; left: 1px; top: 1px; clip:rect(   )
+}
+</style>
+<script>
+function copyText(kouling) {
+      var  text= document.getElementById(kouling).innerText;
+      var input = document.getElementById("input");
+	  input.value = text;
+      input.select();
+      document.execCommand("copy");
+    }
+  </script>
+<base target="_blank" />
+</head>
+
+<body>
+<h1 align="center"><img src="src/qt/res/icons/wallet_bgcoin.png" width="63" />核心QT钱包编译方法 BTAqt.com</h1>
+  <h3 align="center"><a href="http://bitcoinall.org/">BitcoinALL.org</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/bitcoin/bitcoin/">Github.com/Bitcoin</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/bitcoinall/bitcoinall/">Github.com/BitcoinALL</a> <br />
+
+
+<input id="input" name="tkl" value="" style="background-color:#00CCFF; width:86%; height:10px; text-align:center"/><br />
+<a href="BitcoinALL-qt-GUIv1.16.8.rar">【本地下载QT钱包】</a>&nbsp;&nbsp;&nbsp;<a href="https://pan.baidu.com/s/1eVFCB4JvcLC0hzijWo7Tug#list/path=%2FBitcoinALL%2FBitcoinALL-QT&parentPath=%2FBitcoinALL">【百度云下载QT钱包】<br />
+<img src="BitcoinALLqt1.16.8.png" style="float:right; margin:50px;" /></a></h3>
+<h2>&nbsp;</h2>
+<h2>一、安装 Ubuntu  VMware虚拟机</h2>
+<p >&nbsp;&nbsp;1.1 进入<a href="https://www.ubuntu.com/download/alternative-downloads">Ubuntu</a>官网下载系统&nbsp;<a href="http://releases.ubuntu.com/14.04/ubuntu-14.04.5-desktop-amd64.iso.torrent?_ga=2.108478402.1372987785.1524118837-1494174080.1524023950">建议直接Ubuntu 14.04.5 Desktop (64-bit)</a> </p>
+<p >&nbsp;&nbsp;1.2 搜索并安装VMware虚拟机软件 <a href="https://www.cnblogs.com/AloneSword/p/4145267.html">例如v11.0版本</a></p>
+<p >&nbsp;&nbsp;1.3 在VMware中安装Ubuntu系统，注意选择Ubuntu64位，硬盘最好大些如40GB</p>
+<p >（参考：<a href="https://blog.csdn.net/stpeace/article/details/78598333">https://blog.csdn.net/stpeace/article/details/78598333</a>）</p>
+<h2>二、安装各种编译需要支持程序</h2>
+<p>&nbsp;&nbsp;2.1 用快捷键Ctrl + Alt + T 打开，点复制此命令，然后鼠标右键粘贴回车运行。</p>
+<p ><button onclick="copyText('add1')">复制此命令→</button><span id="add1">sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3</span></p>
+<p ><button onclick="copyText('addbst')">复制此命令→</button><span id="addbst">sudo apt-get install libboost-all-dev</span><br />
+（若上方命令boost全装也可选部分安装 sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev</p>
+<p > &nbsp;&nbsp;2.2 下载源代码及运行configure查看检查具体缺少哪些补充。</p>
+<p ><button onclick="copyText('git')">复制此命令→</button><span id="git">sudo apt-get install git</span><br />
+<button onclick="copyText('gitbt')">复制此命令→</button><span id="gitbt">git clone https://github.com/bitcoin/bitcoin.git</span></p>
+<p ><button onclick="copyText('cdmubtc')">复制此命令→</button>
+<span id="cdmubtc">cd bitcoin</span><br />
+<button onclick="copyText('shbtc')">复制此命令→</button><span id="shbtc">./autogen.sh</span></p>
+<p ><button onclick="copyText('confbtc')">复制此命令→</button><span id="confbtc">./configure --with-incompatible-bdb</span></p>
+<p >（用--with-incompatible-bdb  来忽略早期数据库问题，下面的命令可看情况安装）</p>
+ <p><button onclick="copyText('bdb')">复制此命令→</button>
+ <span id="bdb">sudo apt-get install libdb-dev</span><br />
+<button onclick="copyText('bdbpp')">复制此命令→</button>
+ <span id="bdbpp">sudo apt-get install libdb++-dev</span><br />
+
+  <button onclick="copyText('libdb')">复制此命令→</button>
+  <span id="libdb">sudo apt-get install libdb4.8-dev libdb4.8++-dev</span><br />
+<button onclick="copyText('qt48')">复制此命令→</button><span id="qt48">sudo apt-get install libdb5.1++-dev</span></p>
+<p ><button onclick="copyText('upnpc')">复制此命令→</button><span id="upnpc">sudo apt-get install libminiupnpc-dev</span></p>
+<p ><button onclick="copyText('zmq3')">复制此命令→</button><span id="zmq3">sudo apt-get install libzmq3-dev</span></p>
+<p ><button onclick="copyText('qr')">复制此命令→</button><span id="qr">sudo apt-get install libqrencode-dev</span></p>
+<p >QT5：<button onclick="copyText('qt5')">复制此命令→</button><span id="qt5">sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler</span></p>
+<p >QT4：<button onclick="copyText('qt4')">复制此命令→</button><span id="qt4">sudo apt-get install libqt4-dev libprotobuf-dev protobuf-compiler</span></p>
+
+<p >sudo apt-get install make  gcc  g++ autoconf <br />
+sudo apt-get install zlib1g-dev
+<br />
+sudo apt-get install software-properties-common<br />
+sudo add-apt-repository ppa:bitcoin/bitcoin<br />
+sudo apt install software-properties-common
+<br />
+sudo add-apt-repository &quot;deb http://archive.ubuntu.com/ubuntu zesty universe&quot;</p>
+<p ><button onclick="copyText('upda')">复制此命令→</button><span id="upda">sudo apt update</span></p><p ><button onclick="copyText('upgrade')">复制此命令→</button><span id="upgrade">sudo apt upgrade</span></p>
+<p >（参考：<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md">https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md</a><br />
+<a href="https://blog.csdn.net/huangmx1995/article/details/60140062">https://blog.csdn.net/huangmx1995/article/details/60140062</a>）</p>
+<h2>三、下载源代码及运行编译</h2>
+<h3>&nbsp;&nbsp;3.1 编译Linux版本</h3>
+<p>git clone <a href="https://github.com/bitcoin/bitcoin.git" target="_blank">https://github.com/bitcoin/bitcoin.git</a></p>
+<p ><button onclick="copyText('cdmu')">复制此命令→</button>
+  <span id="cdmu">cd bitcoin</span><br />
+
+<button onclick="copyText('sh')">复制此命令→</button><span id="sh">./autogen.sh</span></p>
+<p ><button onclick="copyText('conf')">复制此命令→</button><span id="conf">./configure --with-incompatible-bdb</span></p>
+<p >（直接用./configure一般会提示Berkeley DB other than 4.8,）</p>
+<p ><button onclick="copyText('make')">复制此命令→</button><span id="make">make</span></p>
+<p ><button onclick="copyText('inst')">复制此命令→</button><span id="inst">sudo make install</span><br />
+<button onclick="copyText('qt')">复制此命令→</button><span id="qt">bitcoin-qt</span></p>
+<h3>&nbsp;&nbsp;3.2 交叉编译Windows 64 bit/32bit的exe版本</h3>
+<p >（参考：<a href="https://blog.csdn.net/anda0109/article/details/79458080">https://blog.csdn.net/anda0109/article/details/79458080</a><br />
+<a href="https://github.com/bitcoin/bitcoin/blob/master/doc/build-windows.md#cross-compilation-for-ubuntu-and-windows-subsystem-for-linux">https://github.com/bitcoin/bitcoin/blob/master/doc/build-windows.md</a>）</p>
+<p ><button onclick="copyText('altern')">复制此命令→</button><span id="altern">sudo update-alternatives --config x86_64-w64-mingw32-g++</span><br />
+（仅仅非系统Ubuntu 14.04:版本才需要运行上面命令 i686-w64-mingw32-g++）</p>
+<p ><button onclick="copyText('byexe')">复制此命令→</button><span id="byexe">sudo apt install g++-mingw-w64-x86-64</span><br />
+或<button onclick="copyText('byexe32')">复制此命令→</button>
+  <span id="byexe32">sudo apt install g++-mingw-w64-i686 mingw-w64-i686-dev</span><br />
+<a href="bitcoin-master.zip">下载</a>或
+  <button onclick="copyText('gitbtc')">复制此命令→</button><span id="gitbtc">git clone https://github.com/bitcoin/bitcoin.git</span></p>
+<p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 上面命令一般只需一次不用每次都运行。当make遇到下载问题Ctrl+C 中断，然后再次make或上一命令即可，下载不下来可手动下载。<a href="https://pan.baidu.com/s/1qe-XkvQkzGYaDcnlfeNhjw#list/path=%2FBitcoinALL%2Fdepends&amp;parentPath=%2FBitcoinALL">下载后压缩depends/sources</a>下以后解压即可加速。源代码也下载压缩解压比git下更方便。</p>
+<p ><button onclick="copyText('cdmubtc')">复制此命令→</button>
+<span id="cdmubtc">cd bitcoin</span><br />
+
+  <button onclick="copyText('paths')">复制此命令→</button><span id="paths">PATH=$(echo &quot;$PATH&quot; | sed -e 's/:\/mnt.*//g')</span><br />
+  <button onclick="copyText('depend')">复制此命令→</button><span id="depend">cd depends</span><br />
+  <button onclick="copyText('host')">复制此命令→</button><span id="host">make HOST=x86_64-w64-mingw32 -j4</span><br />
+  &nbsp;&nbsp;（本命令在<a href="http://dogelian.com">加载完sources库文件</a>下约执行<strong>16分钟</strong>，否则看网速。32位参数将x86_64替换为i686）<br />
+  <button onclick="copyText('cd')">复制此命令→</button>
+  <span id="cd">cd ..</span><br />
+  <button onclick="copyText('csh')">复制此命令→</button>
+<span id="csh">./autogen.sh</span><br />
+&nbsp;&nbsp;（一般本命令<strong>30秒钟</strong>内可执行完）<br />
+  <button onclick="copyText('sites')">复制此命令→</button>
+<span id="sites">CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/</span><br />
+&nbsp;&nbsp;（一般本命令<strong>1分钟</strong>内可执行完，32位参数将x86_64替换为i686）<br />
+   <button onclick="copyText('makeexe')">复制此命令→</button>
+<span id="makeexe">make</span><br />
+&nbsp;&nbsp;（一般本命令约<strong>25分钟</strong>执行，在src/qt目录下既可生成bitcoin-qt.exe，在src目录其它exe文件）<br />
+<br />
+</p>
+<h1 align="center">比特币荣耀BitcoinALL 比特安改动清单<br />
+</h1>
+<p >通过^^^^^^BitcoinALL^^^^^^来标记修改位置，将下面文件另存为覆盖<a href="bitcoin-master.zip">比特币源代码文件</a>。从而获得BitcoinALL的源代码。即只要维护下面这些文件即可。</p>
+<p ><strong>1、修改版本号信息多处修改到BitcoinALL</strong>（.txt修改掉，下同）</p>
+<p ><a href="configure.ac.txt">configure.ac[.txt]</a>（多处，在前十行版本号） </p>
+<p ><a href="src/init.cpp">src/init.cpp</a>（1处，中526行，链接和年）</p>
+<p ><a href="src/util.cpp">src/util.cpp</a>（1处，后992行，Core的年）</p>
+<p ><a href="src/clientversion.cpp">src/clientversion.cpp</a>（2处，前节点名与后ID时间）</p>
+<p ><a href="contrib/init/bitcoind.openrc.txt">contrib/init/bitcoind.openrc[.txt]</a>（2处，中name和description）</p>
+<p ><strong>2、单位修改为BTA，aBTA和Bi ，BTC-&gt;BTA</strong></p>
+<p ><a href="src/qt/bitcoinunits.h">src/qt/bitcoinunits.h</a>（1处，中59行，修改三单位）</p>
+<p ><a href="src/qt/bitcoinunits.cpp">src/qt/bitcoinunits.cpp</a>（多处，前修改单位和中119行，修改Bi时无小数）</p>
+<p ><a href="src/qt/bitcoinamountfield.cpp">src/qt/bitcoinamountfield.cpp</a> （2处，前27和102行， BTC-&gt;BTA） </p>
+<p ><a href="src/qt/guiutil.cpp">src/qt/guiutil.cpp</a> （3处，前135行示例地址，183和214行， BTC-&gt;BTA） </p>
+<p ><a href="src/qt/optionsmodel.cpp">src/qt/optionsmodel.cpp</a> （1处，前71行， BTC-&gt;BTA）</p>
+<p > <a href="src/qt/coincontroldialog.cpp">src/qt/coincontroldialog.cpp</a> （1处，后542行， BTC-&gt;BTA） </p>
+<p ><a href="src/qt/overviewpage.cpp">src/qt/overviewpage.cpp</a> （2处，前31和后238行， BTC-&gt;BTA） </p>
+<p ><strong>3、图标修改及首页界面图标</strong></p>
+<p ><a href="src/qt/bitcoin.qrc.txt">src/qt/bitcoin.qrc[.txt]</a>（1处，中间增加一行wallet_bgcoin.png）</p>
+<p ><a href="src/qt/forms/overviewpage.ui.txt">src/qt/forms/overviewpage.ui[.txt]</a>（2处，前76行和后BitcoinALL network，中421行增加图片）</p>
+<p ><a href="src/qt/res/icons/bitcoin.png">src/qt/res/icons/bitcoin.png</a> <img src=src/qt/res/icons/bitcoin.png width="33" /> （替代）</p>
+<p ><a href="src/qt/res/icons/bitcoin.ico">src/qt/res/icons/bitcoin.ico</a>（替代小图标）</p>
+<p ><a href="src/qt/res/icons/wallet_bgcoin.png">src/qt/res/icons/wallet_bgcoin.png</a><img src="src/qt/res/icons/wallet_bgcoin.png" width="33" />（新增）</p>
+<p ><strong>4、文字修正完善描述修改</strong></p>
+<p ><a href="src/qt/res/bitcoin-qt-res.rc.txt">src/qt/res/bitcoin-qt-res.rc[.txt]</a>（1处，中间GUI node for后面字串）</p>
+<p ><a href="src/qt/optionsdialog.cpp">src/qt/optionsdialog.cpp</a>（1处，中111行示例链接替换）</p>
+<p ><a href="src/qt/locale/bitcoin_zh_CN.ts.txt">src/qt/locale/bitcoin_zh_CN.ts[.txt]</a>（多处，查找比特币替换比特安，370标题，106行图标提示及余额，增加A1A平台地址，1722行RPC 控制台加币名，3088行关于描述。）</p>
+<p ><strong>5、增加与BTA基金会交互模块</strong>（这个及下面在开发中）</p>
+
+<p ><strong>6、对PoTX进行统计和投票展示</strong></p>
+<p ><strong>7、借鉴<a href="https://github.com/dogecoin/dogecoin/">Dogecoin</a>引入<a href="https://github.com/dogecoin/dogecoin/blob/master/src/auxpow.cpp">AuxPoW</a>及升级挖矿算法</strong></p>
+<p ><strong>8、借鉴<a href="https://github.com/BTCGPU/BTCGPU">BitcoinGold</a>实现防重放攻击</strong></p>
+<p ><strong>9、付构建创世501,906区块</strong></p>
+<p ><strong>10、比特安BTA主网络上线测试</strong><br />
+</p>
+<center>版权所有 Copyright 2017-2018 &copy; BitcoinALL.org</center><DIV style="DISPLAY: none" id=the_baidu>
+<script type="text/javascript"> 
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe01b40878de0f7a53447138d441d4ddf' type='text/javascript'%3E%3C/script%3E"));
+</script></DIV>
+</body>
+</html>
